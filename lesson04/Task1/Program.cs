@@ -1,19 +1,32 @@
-﻿int[,] matrix = new int[3, 5];
+﻿
 
-Random rnd = new Random();
-for (int i = 0; i < matrix.GetLength(0); i++)
+
+int[,] CreateMatrix(int rowCount, int columsCount)
 {
-    for (int j = 0; j < matrix.GetLength(1); j++)
+    int[,] matrix = new int[rowCount, columsCount];
+
+    Random rnd = new Random();
+    for (int i = 0; i < matrix.GetLength(0); i++)
     {
-        matrix[i, j] = rnd.Next(1, 11);
+        for (int j = 0; j < matrix.GetLength(1); j++)
+        {
+            matrix[i, j] = rnd.Next(1, 11);
+        }
+    }
+    return matrix;
+}
+
+void ShowMatrix(int[,] matrix)
+{
+    for (int i = 0; i < matrix.GetLength(0); i++)
+    {
+        for (int j = 0; j < matrix.GetLength(1); j++)
+        {
+            Console.Write($"{matrix[i, j]} "); //интропаляция структуры
+        }
+        Console.WriteLine(); //перенесли массив построчно (каждый одномерный массив с новой строчки)
     }
 }
 
-for (int i = 0; i < matrix.GetLength(0); i++)
-{
-    for (int j = 0; j < matrix.GetLength(1); j++)
-    {
-        Console.Write($"{matrix[i, j]} "); //интропаляция структуры
-    }
-    Console.WriteLine(); //перенесли массив построчно (каждый одномерный массив с новой строчки)
-}
+int[,] matrix = CreateMatrix(4, 5);
+ShowMatrix(matrix);
